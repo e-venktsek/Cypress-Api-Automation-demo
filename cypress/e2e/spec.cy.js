@@ -35,13 +35,12 @@ describe("API Test - GET /api/users?page=2", () => {
     // Ensure we have a user ID from the previous test
     expect(userId).to.be.a("number");
 
-    // Send a GET request to retrieve a single user by user ID
     cy.request("GET", `/users/${userId}`)
       .should((response) => {
-        // Assert that the response status code is 200 (OK)
+     
         expect(response.status).to.eq(200);
 
-        // Assert that the response contains the expected user data
+     
         expect(response.body).to.have.property("data");
         expect(response.body.data).to.have.property("id", userId);
         expect(response.body.data).to.have.property("email");
